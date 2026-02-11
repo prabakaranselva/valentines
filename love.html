@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>For My Wife Reeshma ❤️</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #d54bd7, #d54bd7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+
+            width: 90%;
+            max-width: 450px;
+
+            margin: auto;
+            position: relative;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 32px;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+            font-family: 'Dancing Script', cursive;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-top: 10px;
+            font-weight: 600;
+
+        }
+
+        p {
+            color: #fff0f5;
+            font-size: 18px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-weight: bold;
+            width: 150px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #yes {
+            background: #e91e63;
+            color: white;
+        }
+
+        #yes:hover {
+            background: #d81b60;
+        }
+
+        #no {
+            background: #455a64;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        img {
+            width: 240px;
+            border-radius: 15px;
+            margin-top: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .heart {
+            position: fixed;
+            top: -20px;
+            color: #ffffff;
+            font-size: 20px;
+            animation: fall linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card" id="proposal">
+        <h1>Reeshma ❤️<br>You can’t escape destiny 💍</h1>
+
+        <div class="btn-container">
+            <button id="yes" onclick="yesClicked()">YES 💖</button>
+            <button id="no">NO 😜</button>
+        </div>
+    </div>
+
+    <div class="card hidden" id="result">
+        <h1>Happy Valentine’s Day 💖🌹</h1>
+        <h2>My Wife Reeshma 👩‍❤️‍👨</h2>
+        <img src="prd.jpeg" alt="Our Love">
+        <p>Forever Husband & Wife 💍</p>
+    </div>
+
+    <script>
+
+        const noButton = document.getElementById("no");
+        const card = document.getElementById("proposal");
+
+        noButton.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+
+        noButton.addEventListener("mouseover", function () {
+
+            noButton.style.position = "absolute";
+
+            const buttonWidth = noButton.offsetWidth;
+            const buttonHeight = noButton.offsetHeight;
+
+            const maxX = card.clientWidth - buttonWidth - 10;
+            const maxY = card.clientHeight - buttonHeight - 10;
+
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+        });
+
+        function yesClicked() {
+            document.getElementById("proposal").classList.add("hidden");
+            document.getElementById("result").classList.remove("hidden");
+            startHearts();
+        }
+
+        function startHearts() {
+            setInterval(() => {
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+                heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }, 250);
+        }
+
+    </script>
+
+</body>
+
+</html>
