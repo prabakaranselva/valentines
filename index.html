@@ -28,12 +28,11 @@
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
-
             width: 90%;
             max-width: 450px;
-
             margin: auto;
             position: relative;
+            z-index: 2;
         }
 
         h1 {
@@ -49,7 +48,6 @@
             color: #ffffff;
             margin-top: 10px;
             font-weight: 600;
-
         }
 
         p {
@@ -124,6 +122,7 @@
 
 <body>
 
+    <!-- Proposal Card -->
     <div class="card" id="proposal">
         <h1>Reeshma ❤️<br>Will you be my Valentine’s 💍?</h1>
 
@@ -133,12 +132,16 @@
         </div>
     </div>
 
+    <!-- Result Card -->
     <div class="card hidden" id="result">
         <h1>Happy Valentine’s Day 💖🌹</h1>
         <h2>My Wife Reeshma 👩‍❤️‍👨</h2>
         <img src="prd.jpeg" alt="Our Love">
         <p>Forever Husband & Wife 💍</p>
     </div>
+
+    <!-- 🎵 Love Song -->
+    <audio id="loveSong" src="un_kannula.mp3" loop></audio>
 
     <script>
 
@@ -168,8 +171,15 @@
         });
 
         function yesClicked() {
+
             document.getElementById("proposal").classList.add("hidden");
             document.getElementById("result").classList.remove("hidden");
+
+            // 🎵 Play Song
+            const song = document.getElementById("loveSong");
+            song.volume = 0.6;   // 60% volume
+            song.play();
+
             startHearts();
         }
 
